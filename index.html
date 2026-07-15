@@ -2,9 +2,170 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=CartaClandestina.pdf">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Clandestina – Carta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #1a1008;
+      color: #e8d5a3;
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    header img {
+      max-width: 220px;
+      width: 60%;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: #c8973a;
+      letter-spacing: 6px;
+      margin-top: 16px;
+    }
+
+    header p {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: #a07840;
+      margin-top: 4px;
+    }
+
+    .divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c8973a, transparent);
+      margin: 20px auto;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 30px 60px;
+    }
+
+    nav button {
+      width: 100%;
+      max-width: 360px;
+      padding: 18px 20px;
+      background: transparent;
+      border: 1px solid #c8973a;
+      color: #e8d5a3;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover, nav button:active {
+      background: #c8973a;
+      color: #1a1008;
+    }
+
+    .carta {
+      display: none;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0 60px;
+    }
+
+    .carta.activa {
+      display: block;
+    }
+
+    .carta img {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .btn-volver {
+      display: inline-block;
+      margin: 30px auto 0;
+      padding: 14px 30px;
+      border: 1px solid #c8973a;
+      color: #c8973a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s;
+    }
+
+    .btn-volver:hover {
+      background: #c8973a;
+      color: #1a1008;
+    }
+  </style>
 </head>
 <body>
+
+  <div id="inicio">
+    <header>
+      <img src="Logo.png" alt="La Clandestina">
+      <h1>LA CLANDESTINA</h1>
+      <p>ALHAURÍN DE LA TORRE</p>
+    </header>
+    <div class="divider"></div>
+    <nav>
+      <button onclick="abrirCarta('comida')">COMIDA</button>
+      <button onclick="abrirCarta('bebida')">BEBIDA</button>
+      <button onclick="abrirCarta('combinados')">COMBINADOS</button>
+      <button onclick="abrirCarta('spritz')">SPRITZ Y CÓCTEL CLUB</button>
+    </nav>
+  </div>
+
+  <div id="comida" class="carta">
+    <img src="Comida.jpg" alt="Carta Comida">
+    <br>
+    <button class="btn-volver" onclick="volver()">← VOLVER</button>
+  </div>
+
+  <div id="bebida" class="carta">
+    <img src="Bebida.jpg" alt="Carta Bebida">
+    <br>
+    <button class="btn-volver" onclick="volver()">← VOLVER</button>
+  </div>
+
+  <div id="combinados" class="carta">
+    <img src="Combinados.jpg" alt="Carta Combinados">
+    <br>
+    <button class="btn-volver" onclick="volver()">← VOLVER</button>
+  </div>
+
+  <div id="spritz" class="carta">
+    <img src="Spritz.jpg" alt="Spritz y Cóctel Club">
+    <br>
+    <button class="btn-volver" onclick="volver()">← VOLVER</button>
+  </div>
+
+  <script>
+    function abrirCarta(seccion) {
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById(seccion).classList.add('activa');
+      window.scrollTo(0, 0);
+    }
+
+    function volver() {
+      document.querySelectorAll('.carta').forEach(c => c.classList.remove('activa'));
+      document.getElementById('inicio').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
 </body>
 </html>
